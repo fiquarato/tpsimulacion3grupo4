@@ -1,0 +1,129 @@
+<form class="col-md-12">
+	<h1>Método Congruencial MULTIPLICATIVO</h1>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="sem" class="control-label">Semilla</label>
+			<input name="sem" ng-model="sem" class="form-control" type="number" required>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="modulo" class="control-label">Módulo</label>
+			<input name="modulo" ng-model="modulo" class="form-control" type="number" required>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="a" class="control-label">Nro A</label>
+			<input name="a" ng-model="a" class="form-control" type="number" required>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="cantidad" class="control-label">Cantidad a generar</label>
+			<input name="cantidad" ng-model="cantidad" class="form-control" type="number"  min="1" required>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="ini" class="control-label">A (Inicio)</label>
+			<input name="ini" ng-model="ini" class="form-control" type="number" required>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="fin" class="control-label">B (Fin)</label>
+			<input name="fin" ng-model="fin" class="form-control" type="number" required>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="intervalos" class="control-label">Intervalos Gráfica</label>
+			<input name="intervalos" ng-model="intervalos" class="form-control" type="number" min="1" max="1000" required>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<label for="ejecutar" class="control-label">Ejecutar</label>
+		<button class="btn btn-danger form-control" type="submit" ng-click="randomMultiplicativo(ini, fin, cantidad, sem, modulo, a, intervalos)">Calcular</button>
+	</div>
+	<div class="col-md-1">
+		<label for="agregar" class="control-label">Agregar Nº</label>
+		<button class="btn btn-success form-control" type="button" ng-disabled="disabledButton==false" ng-click="random1(ini, fin, modulo, a)">Agregar</button>
+	</div>
+</form>
+<div class="col-md-6">
+	<label class="control-label" ng-show="data.length > 0">Gráfico:</label>
+	<canvas id="myChart" class="chart chart-bar" chart-data="data"
+	style="display: block; width: 200px; height: 200;" chart-colors="colors"
+	chart-labels="series" chart-series="dataSeries" chart-options="options1"
+	chart-dataset-override="datasetOverride" chart-click="onClick">
+</canvas> 
+</div>
+<div class="col-md-1" ng-show="data.length > 0">
+	<label class="control-label">Numeros Obtenidos:</label>
+	<ul>
+		<li ng-repeat="row in randoms track by $index">{{row}}</li>
+	</ul>
+</div>
+<div class="col-md-5" ng-show="data.length > 0">
+	<h3>Prueba Chi Cuadrado:</h3>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="alfa" class="control-label">Significancia (alfa)</label>
+			<input name="alfa" ng-model="alfa" class="form-control" type="number" required>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="gdl" class="control-label">Grados de libertad</label>
+			<input name="gdl" ng-model="gdl" class="form-control" type="number" ng-disabled="true" required>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<label for="verificar" class="control-label">Verificar</label>
+		<button class="btn btn-danger form-control" type="button" ng-click="pruebaChi(alfa, cantidad, intervalos)">Verificar</button>
+	</div>
+	<div class="col-md-12">
+		<table class="table table-bordered table-striped page-header">
+			<thead>
+				<tr>   
+					<th>Nº Intervalo</th>   
+					<th>[(FE-FO)^2] / FE</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in arrayChi track by $index">
+					<td>{{$index+1}}</td>
+					<td>{{row}}</td>
+				</tr>
+				<tr>
+					<td>TOTAL:</td>
+					<td>{{suma}}</td>
+				</tr>
+			</tbody>
+		</table> 
+	</div>
+	<div class="col-md-12">
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="suma" class="control-label">TOTAL</label>
+				<input name="suma" ng-model="suma" class="form-control" type="number" ng-disabled="true" required>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<label for="menor" class="control-label"><</label>
+		</div>
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="chi" class="control-label">Chi cuadrado</label>
+				<input name="chi" ng-model="chi" class="form-control" type="number" ng-disabled="true" required>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="form-group">
+				<label for="verifica" class="control-label">Verifica?</label>
+				<input name="verifica" ng-model="verifica" class="form-control" ng-disabled="true" required>
+			</div>
+		</div>
+	</div>
+</div>

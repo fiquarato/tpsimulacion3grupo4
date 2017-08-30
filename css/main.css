@@ -1,0 +1,202 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #FFFFFF;
+}
+
+footer {
+  height: 30px;
+  color: #777;
+  background: #FFFFFF;
+  border-top: 1px solid #e5e5e5;
+}
+
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
+.page {
+  background: #FFFFFF;
+  border-radius: 50px;
+  margin-bottom: 15px;
+}
+
+.page-container {
+  padding-bottom: 20px;
+  min-height: 100%;
+  margin: 0 auto -30px;
+}
+
+.icon-footer {
+  height: 25px;
+}
+
+.footer-container {
+
+}
+
+.home-image {  
+  max-height: 300px;
+  width: 400px;
+}
+
+.map-window {
+   background-color: : "#f9f9f9",
+   border: "2px solid d9d9d9"
+}
+
+.logo-login {
+  height: 210px;
+}
+
+.agregar {
+    position: absolute;
+    bottom: 25px;
+}
+
+.texto-listado {
+  margin-top: 20px;
+  margin-bottom: -5px;
+}
+
+
+.scroll {
+  height: 85%;
+}
+
+@media (max-width: 2560px){
+  .map-fixed {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    width: 66%;
+  }
+  .angular-google-map-container { 
+    height: calc(100vh - 4em - 6px);
+  }
+
+  .margin-map {
+    margin-top: 60px;
+  }
+
+  .logo-texto {
+      margin-top: 20px;
+      margin-left: -65px;
+  }
+
+  .img-marker {
+    height: 60px;
+  }
+
+  .titulo-entidad {
+    margin-top: 0px;
+  }
+
+  .link-entidad {
+    text-decoration: none !important;
+  }
+
+  .descripcion-entidad {
+    margin-left: 15px;
+    color: grey;
+  }
+
+  .img-entidad {
+    margin-top: -12px;
+  }
+
+  .marker-detail {
+    border-style: solid;
+    border-color: blue;
+    height: 48px;
+
+  }
+
+  .buscador {
+      margin-top: 13px;
+      margin-left: -65px;
+  }
+
+  .discapacidades-ddl {
+    margin-top: 13px;
+    margin-left: -55px;
+    width: 150px;
+  }
+
+  .categorias-ddl {
+    margin-top: 13px;
+    margin-left: -140px;
+    width: 150px;
+  }
+
+  .iconos-header {
+    font-size: 20px;
+  }
+
+  .buttons-header {
+    margin-top: 10px;
+    margin-left: -70px;
+  }
+  .logo {
+      height: 60px;
+  }
+}
+
+@media (max-width: 1430px){
+  .map-fixed {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    width: 66%;
+  }
+  .angular-google-map-container { 
+    height: calc(100vh - 4em - 6px);
+  }
+   .logo-texto {
+      margin-top: 20px;
+      height: 17px;
+      margin-left: -33px;
+  }
+  .margin-map {
+    margin-top: 52px;
+  }
+  
+  .buscador {
+      margin-top: 9px;
+      margin-left: -35px;
+  }
+
+  .iconos-header {
+        font-size: 12px;
+  }
+
+  .buttons-header {
+    margin-top: 10px;
+    margin-left: -50px;
+    width: 35px;
+  }
+  .logo {
+      height: 50px;
+  }
+  .img-padding {
+    padding-right: 0px;
+  }
+}
+
+.labelClass {
+    padding-top:29px;
+    padding-left:2px;
+    color:#000; 
+    height:61px; 
+    width:37px;
+    font-size:9px;
+    line-height: 12px;
+}
+
+.float-right {
+  float: right;
+}
