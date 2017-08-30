@@ -43,20 +43,30 @@ angular.module('Exponencial', ["chart.js"])
       $scope.randoms = new Array();
       var zetas = new Array();
 
+            var max = -Number.MAX_VALUE,
+      min = Number.MAX_VALUE;
+
       //FOR para crear numeros aleatorios con la formula EXPONENCIAL
       for (var i = 0; i < cantidad; i++) {
         var aux1 = Math.random();
-        var random = (-(1/lamda)*Math.log(1-aux1)).toFixed(2);
+        var random = (-(1/lamda)*Math.log(1-aux1));
         zetas.push(random);
+        //Necesito el max y min de los numeros generados, para poder definir el paso de los intervalos
+        if (max < random) {
+          max = random;
+        }
+        if (min > random) {
+         min = random;
+       }
         //RANDOMS es un arreglo con los numeros que se listan, por performance se limita a 5000
         if($scope.randoms.length < 5000) {
-          $scope.randoms.push(random);
+          $scope.randoms.push(random.toFixed(2));
         }
       }
       
-      //Necesito el max y min de los numeros generados, para poder definir el paso de los intervalos
-      var max = Math.max(...zetas);
-      var min = Math.min(...zetas);
+      //Esta forma de calcular max y min, no va mas. 
+      // var max = Math.max(...zetas);
+      // var min = Math.min(...zetas);
       $scope.paso = (max-min)/intervalos;
 
       //El arreglo LABELS guarda el valor maximo LIMITE de cada intervalo
@@ -92,10 +102,10 @@ angular.module('Exponencial', ["chart.js"])
 //Metodo para agregar de a un solo numero aleatorio
 $scope.random1 = function(lamda){
   var aux1 = Math.random();
-  var random = (-(1/lamda)*Math.log(1-aux1)).toFixed(2);
+  var random = (-(1/lamda)*Math.log(1-aux1));
   
   if($scope.randoms.length < 5000) {
-    $scope.randoms.push(random);
+    $scope.randoms.push(random.toFixed(2));
   }
 
   for(var j = 0; j < $scope.labels.length; j++){

@@ -41,24 +41,33 @@ angular.module('Normal', ["chart.js"])
       $scope.zetas = new Array();
       $scope.randoms = new Array();
 
+      var max = -Number.MAX_VALUE,
+      min = Number.MAX_VALUE;
+
       for (var i = 0; i < cantidad; i++) {
 
         var aux1 = Math.random();
         var aux2 = Math.random();
         var z = (Math.sqrt(-2*Math.log(aux1)))*Math.cos(2*Math.PI*aux2);
-        var random = (media+(z*sigma)).toFixed(2);
+        var random = (media+(z*sigma));
         $scope.zetas.push(random);
-        if($scope.randoms.length < 5000) {
-          $scope.randoms.push(random);
+        if (max < random) {
+          max = random;
         }
+        if (min > random) {
+         min = random;
+       }
+       if($scope.randoms.length < 5000) {
+        $scope.randoms.push(random.toFixed(2));
       }
-      
-      var max = Math.max(...$scope.zetas);
-      var min = Math.min(...$scope.zetas);
+    }
+
+      // var max = Math.max(...$scope.zetas);
+      // var min = Math.min(...$scope.zetas);
       $scope.paso = (max-min)/intervalos;
 
       for (var i = 1; i <= intervalos; i++) {
-       min = min + $scope.paso;
+       min = (min + $scope.paso);
        $scope.labels.push(min);
        $scope.data.push(0);
      }
@@ -85,11 +94,11 @@ angular.module('Normal', ["chart.js"])
     var aux1 = Math.random();
     var aux2 = Math.random();
     var z = (Math.sqrt(-2*Math.log(aux1)))*Math.cos(2*Math.PI*aux2);
-    var random = (media+(z*sigma)).toFixed(2);
+    var random = (media+(z*sigma));
     $scope.zetas.push(random);
 
     if($scope.randoms.length < 5000) {
-      $scope.randoms.push(random);
+      $scope.randoms.push(random.toFixed(2));
     }
 
     for(var j = 0; j < $scope.labels.length; j++){
